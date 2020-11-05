@@ -19,3 +19,6 @@ A solution for that might be to use MESSAGE QUEUE, but i recently just cjecked i
 
 ## CONTRIBUTE
  Fork the project and send a PR i will definately check and approve it
+
+## Mail screenshot
+![screenshot](https://github.com/phawazzzy/AUTO-MAILER/blob/main/studygroup%20template.jpeg)
