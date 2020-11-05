@@ -11,4 +11,11 @@ There was an HTML template designed @Robogeek95 so i wanted to send this mail wi
 I used nodemailer to send the mail.
 
 
-ALL I WANTED TO DO WAS AUTOMATE THE PROCESS
+ALL I WANTED TO DO WAS AUTOMATE THE PROCESS.
+
+This works fine but i had an issue with SMTP server for the mail, I used gmail, but gmail doesnt allow me to send multiple within a specific time i guess.
+
+A solution for that might be to use MESSAGE QUEUE, but i recently just cjecked it out and i dont know how to apply the knowledge to this problem yet.
+
+## CONTRIBUTE
+ Fork the project and send a PR i will definately check and approve it
