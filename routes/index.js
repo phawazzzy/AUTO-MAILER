@@ -32,75 +32,58 @@ const checkTrack = (track) => {
 
   }
 }
-// console.log(checkTrack())
-/* GET home page. */
+
+
+function operation() {
+  // get the entries from csv file
+  const jsonArray = await csvToJson().fromFile(csvFilePath);
+  // map out the needed info
+  const payload = jsonArray.map((doc) => {
+    return {
+      email: doc.Email,
+      studygroup: checkTrack(doc.track),
+      studygroupName: doc.track,
+      Fullname: doc.FullName,
+    }
+  });
+  console.log(payload);
+
+  // populate the DB with the info
+  await Details.create(payload)
+}
+
+
+// route to send the mail
 router.get('/', async (req, res, next) => {
   try {
-    //   const jsonArray = await csvToJson().fromFile(csvFilePath);
-    // const payload = jsonArray.map((doc) => {
-    //   return {
-    //     email: doc.Email,
-    //     studygroup: checkTrack(doc.track),
-    //     studygroupName: doc.track,
-    //     Fullname: doc.FullName,
-    //   }
-    // });
-    // // // console.log(payload);
-
-    // // await Details.create(payload)
-
-    // const array = [...payload]
-    // // console.log(array);
-    // console.log(array.length)
-
-    const alll = await Details.find()
-    const all = alll
+    // get the info from DB
+    const all = await Details.find()
     console.log(all)
 
-    // setInterval(async() => {
-
-    // }, 2*60*100)
-    let options;
+    // Loop through the info
     for (let i = 0; i < all.length; i++) {
       // console.log("hi",all[i])
+      // this was intended to buy time for mailing service to rest for 3mins after sending a mail
       setInterval(async () => {
         console.log("waiting......")
-        // const all2 = await Details.findOne({ email: all[i].email });
-        // console.log(all2)
+        // get on user info
+        const all2 = await Details.findOne({ email: all[i].email });
+        console.log(all2)
 
-        // const options = {
-        //   receiver: all2.email,
-        //   subject: "CONGRATULATIONS!!!, you are in",
-        //   text: "you have been accepted in for the study group",
-        //   output: generateMailForSignup(all2.studygroup, all2.Fullname, all2.studygroupName)
-        // };
-        // let mail = await mailer(options);
-        // if (mail ==="Mail sent") console.log("mail sent")
-      }, 1 *60 * 1000)
-      //   const all2 = await Details.findOne({ email: all[i].email });
-      //   console.log(all2)
+        // populate the person info into the mail
+        const options = {
+          receiver: all2.email,
+          subject: "CONGRATULATIONS!!!, you are in",
+          text: "you have been accepted in for the study group",
+          output: generateMailForSignup(all2.studygroup, all2.Fullname, all2.studygroupName)
+        };
 
-      //  const options = {
-      //     receiver: all2.email,
-      //     subject: "CONGRATULATIONS!!!, you are in",
-      //     text: "you have been accepted in for the study group",
-      //     output: generateMailForSignup(all2.studygroup, all2.Fullname, all2.studygroupName)
-      //   };
-      // console.log("option",options);
-
-      // // function to send the mail
-      // setTimeout(async() => {
-      // let mail = await mailer(options);
-      // if(mail) array.pop();
-      // console.log(array.length)
-
-      // }, 3*60*1000)
-      // // await mailer(options);
+        let mail = await mailer(options);
+        if (mail === "Mail sent") console.log("mail sent")
+      }, 3 * 60 * 1000)
 
     }
-    // res.render('index', { title: 'Express', all2 });
     return res.status(200).json({ response: "Success" })
-
 
   } catch (error) {
     return res.status(500).json({ error })
