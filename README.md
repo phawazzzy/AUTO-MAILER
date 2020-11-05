@@ -7,7 +7,7 @@ There are 8 different study groups, each having its information (whatapp group l
 I downloaded the csv file from google slides(as the entries were gotten from using google forms). 
 Converted to Array of objects 
 mapped out the each users email, name, and study group they registerd.
-There was an HTML template designed @Robogeek95 so i wanted to send this mail with contents specified for each user.
+There was an HTML template designed [@Robogeek95](https://github.com/Robogeek95) so i wanted to send this mail with contents specified for each user.
 I used nodemailer to send the mail.
 
 
