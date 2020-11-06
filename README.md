@@ -20,7 +20,38 @@ I was about to send up to 30+ mails out of 70
 A solution for this issue might be to use MESSAGE QUEUE, but i recently just checked it out and i dont know how to apply the knowledge to this problem yet.
 
 ## CONTRIBUTE
- Fork the project and send a PR i will definately check and approve it
+ Your contribution is appreciated 😁
+
+This is a Node.js project, hopefully you have Node.js installed or visit [here](https://nodejs.org/en/download/)
+
+
+**Option 1 - Simple Typo Fixes**
+For small issues, like a typo or broken link, use Github's inline file editor to make the fix and submit a pull request.
+
+**Option 2 - Work on your own Fork**
+For more complex contributions, new features or issue, you should work on the project on your local system
+
+###### First, fork your copy of this repo on Github and clone it.
+
+```terminal
+git clone <your-forked-repo>
+```
+
+###### install your dependencies, and start your node server
+```terminal
+npm install
+npm run dev
+```
+
+###### Send us your fix
+```terminal
+git checkout -b my-fix
+# fix some code...
+
+git commit -m "fix: corrected a typo"
+git push origin my-fix
+```
+Lastly, open a pull request on Github. Once merged, your changes will automatically become live 🚀
 
 Gracies
 ## Mail screenshot
